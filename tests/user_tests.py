@@ -1,5 +1,6 @@
 from nose.tools import *
 from LIFE_BALANCER.user import User
+from LIFE_BALANCER.no_such_goal_error import NoSuchGoalError
 
 class TestUser:
 
@@ -22,3 +23,7 @@ class TestUser:
         self.user.addGoal(self.exampleGoal)
         self.user.removeGoal(self.exampleGoal)
         assert_equal(self.user.goals, [])
+
+    @raises(NoSuchGoalError)
+    def test_shouldRaiseNoSuchGoalError(self):
+        self.user.removeGoal(self.exampleGoal)

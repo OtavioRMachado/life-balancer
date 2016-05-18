@@ -1,3 +1,5 @@
+from no_such_goal_error import NoSuchGoalError
+
 class User(object):
 
     def __init__(self, username, password, email):
@@ -12,4 +14,7 @@ class User(object):
         self.goals.append(goal)
 
     def removeGoal(self, goal):
-        self.goals.remove(goal)
+        try:
+            self.goals.remove(goal)
+        except ValueError as error:
+            raise NoSuchGoalError

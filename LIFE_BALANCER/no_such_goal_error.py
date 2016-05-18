@@ -1,0 +1,2 @@
+class NoSuchGoalError(Exception):
+    pass
